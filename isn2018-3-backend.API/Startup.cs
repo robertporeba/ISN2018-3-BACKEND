@@ -35,7 +35,9 @@ namespace isn2018_3_backend.API
             services.AddDbContext<IsnContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<IsnContext>();
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<IsnContext>();
 
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

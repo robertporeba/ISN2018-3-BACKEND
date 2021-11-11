@@ -9,5 +9,6 @@ namespace isn2018_3_backend.API
     {
         public string Email { get; set; }
         public string Password { get; set; }
+        public string Type { get; set; }
     }
 }

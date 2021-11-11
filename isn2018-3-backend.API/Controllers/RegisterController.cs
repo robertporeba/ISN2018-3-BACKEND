@@ -15,6 +15,7 @@ namespace isn2018_3_backend.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
     public class RegisterController : ControllerBase
     {
         private readonly SignInManager<IdentityUser> _signInManager;
@@ -27,11 +28,43 @@ namespace isn2018_3_backend.API.Controllers
             _userManager = userManager;
         }
 
-        [AllowAnonymous]
-        [HttpPost]
-        public IActionResult Register([FromBody] RegisterModel registerModel)
+        [HttpPost("Register")]
+        public async Task<IActionResult> Register([FromBody] UserModel registerModel)
         {
-            
+            IActionResult response = BadRequest(new { Error = "Undefined error" });
+            var existingUser = await _userManager.FindByEmailAsync(registerModel.Email);
+
+            if (existingUser != null)
+            {
+                response = BadRequest(new { Error = "User already exist" });
+                return response;
+            }
+
+            var newUser = new IdentityUser
+            {
+                Email = registerModel.Email,
+                UserName = registerModel.Email,
+            };
+
+            var createdUser = await _userManager.CreateAsync(newUser, registerModel.Password);
+
+            if (!createdUser.Succeeded)
+            {
+                response = BadRequest(new { Error = createdUser.Errors.Select(x => x.Description)});
+                return response;
+            }
+
+            existingUser = await _userManager.FindByEmailAsync(registerModel.Email);
+            var userRole = await _userManager.AddToRoleAsync(existingUser, registerModel.Type);
+
+            if (!createdUser.Succeeded)
+            {
+                response = BadRequest(new { Error = "Can't create user with role "+ registerModel.Type});
+                return response;
+            }
+
+            response = Ok("User created");
+            return Ok("User created");
         }
     }
 }

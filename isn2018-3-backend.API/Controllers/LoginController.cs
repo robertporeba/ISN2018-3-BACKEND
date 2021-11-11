@@ -15,6 +15,7 @@ namespace isn2018_3_backend.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
     public class LoginController : ControllerBase
     {
         private readonly SignInManager<IdentityUser> _signInManager;
@@ -27,8 +28,7 @@ namespace isn2018_3_backend.API.Controllers
             _userManager = userManager;
         }
 
-        [AllowAnonymous]
-        [HttpPost]
+        [HttpPost("Login")]
         public IActionResult Login([FromBody] UserModel loginModel)
         {
             IActionResult response = Unauthorized();
