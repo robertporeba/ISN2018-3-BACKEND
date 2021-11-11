@@ -20,7 +20,7 @@ namespace isn2018_3_backend.API.Controllers
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly IConfiguration _config;
         private readonly UserManager<IdentityUser> _userManager;
-        public LoginController(SignInManager<IdentityUser> signInManager, IConfiguration config, UserManager<IdentityUser> userManager, IAdminPanelService adminPanel)
+        public LoginController(SignInManager<IdentityUser> signInManager, IConfiguration config, UserManager<IdentityUser> userManager)
         {
             _signInManager = signInManager;
             _config = config;
