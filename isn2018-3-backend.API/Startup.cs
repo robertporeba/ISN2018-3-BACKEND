@@ -32,6 +32,7 @@ namespace isn2018_3_backend.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddDbContext<IsnContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -75,6 +76,13 @@ namespace isn2018_3_backend.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(options => options
+            .WithOrigins(new[] { "http://localhost:3000", "http://localhost:44338" })
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials()
+            );
 
             app.UseAuthentication();
 
