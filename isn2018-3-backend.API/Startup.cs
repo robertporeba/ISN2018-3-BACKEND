@@ -55,6 +55,8 @@ namespace isn2018_3_backend.API
                     };
                 });
 
+            services.AddCors();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -71,6 +73,11 @@ namespace isn2018_3_backend.API
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "isn2018_3_backend.API v1"));
             }
+
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseHttpsRedirection();
 

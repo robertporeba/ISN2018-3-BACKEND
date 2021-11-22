@@ -15,7 +15,8 @@ namespace isn2018_3_backend.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin, User")]
+    //[Authorize(Roles = "Admin, User")]
+    [AllowAnonymous]
     public class UserController : ControllerBase
     {
         [HttpGet("GetInfo")]
