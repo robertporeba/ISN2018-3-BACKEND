@@ -57,13 +57,12 @@ namespace isn2018_3_backend.API.Controllers
             existingUser = await _userManager.FindByEmailAsync(registerModel.Email);
             var userRole = await _userManager.AddToRoleAsync(existingUser, registerModel.Type);
 
-            if (!createdUser.Succeeded)
+            if (!userRole.Succeeded)
             {
                 response = BadRequest(new { Error = "Can't create user with role "+ registerModel.Type});
                 return response;
             }
 
-            response = Ok("User created");
             return Ok("User created");
         }
     }
