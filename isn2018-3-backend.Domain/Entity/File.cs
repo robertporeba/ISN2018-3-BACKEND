@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace isn2018_3_backend.Domain.Entity
 {
-    [Table("Status")]
-    public class Status
+    [Table("File")]
+    public class File
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public int TaskId { get; set; }
 
         public virtual Task Task { get; set; }
     }
