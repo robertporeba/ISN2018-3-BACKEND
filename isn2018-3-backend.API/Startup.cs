@@ -56,6 +56,7 @@ namespace isn2018_3_backend.API
 
             services.AddCors();
 
+            services.AddInfrastructure();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
