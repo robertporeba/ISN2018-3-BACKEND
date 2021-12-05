@@ -8,5 +8,6 @@ namespace isn2018_3_backend.Domain.Interfaces
 {
     public interface ITaskRepository
     {
+        string AddTask(Domain.Entity.Task task);
     }
 }

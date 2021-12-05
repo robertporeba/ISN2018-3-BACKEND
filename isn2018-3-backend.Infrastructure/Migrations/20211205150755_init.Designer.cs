@@ -10,8 +10,8 @@ using isn2018_3_backend.Infrastructure;
 namespace isn2018_3_backend.Infrastructure.Migrations
 {
     [DbContext(typeof(IsnContext))]
-    [Migration("20211129170928_database-structure")]
-    partial class databasestructure
+    [Migration("20211205150755_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

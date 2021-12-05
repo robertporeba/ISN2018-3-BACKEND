@@ -11,11 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{A5B69FBA-D561-47DE-8423-E493123A3D7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "isn2018-3-backend.Test", "isn2018-3-backend.Test\isn2018-3-backend.Test.csproj", "{F9C06AC3-53D3-4708-9D7C-8248ADFA3FFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "isn2018-3-backend.Test", "isn2018-3-backend.Test\isn2018-3-backend.Test.csproj", "{F9C06AC3-53D3-4708-9D7C-8248ADFA3FFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "isn2018-3-backend.Infrastructure", "isn2018-3-backend.Infrastructure\isn2018-3-backend.Infrastructure.csproj", "{3F9B2187-0AA4-459F-9EAD-E2CF7C74B260}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "isn2018-3-backend.Infrastructure", "isn2018-3-backend.Infrastructure\isn2018-3-backend.Infrastructure.csproj", "{3F9B2187-0AA4-459F-9EAD-E2CF7C74B260}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "isn2018-3-backend.Domain", "isn2018-3-backend.Domain\isn2018-3-backend.Domain.csproj", "{5215474D-B790-43FC-9185-EB097E542DAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "isn2018-3-backend.Domain", "isn2018-3-backend.Domain\isn2018-3-backend.Domain.csproj", "{5215474D-B790-43FC-9185-EB097E542DAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

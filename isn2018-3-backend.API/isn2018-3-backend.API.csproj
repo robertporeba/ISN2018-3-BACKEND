@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\isn2018-3-backend.Domain\isn2018-3-backend.Domain.csproj" />
     <ProjectReference Include="..\isn2018-3-backend.Infrastructure\isn2018-3-backend.Infrastructure.csproj" />
   </ItemGroup>
 
