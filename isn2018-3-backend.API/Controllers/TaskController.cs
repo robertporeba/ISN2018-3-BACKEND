@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using isn2018_3_backend.Domain.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -18,11 +19,22 @@ namespace isn2018_3_backend.API.Controllers
     [Authorize(Roles = "Admin")]
     public class TaskController : ControllerBase
     {
-        [HttpGet("GetInfo")]
-        public string GetInfo()
+        private readonly ITaskRepository _taskRepository;
+
+        public TaskController(ITaskRepository taskRepository)
         {
-            string info = "Access";
-            return info;
+            _taskRepository = taskRepository;
+        }
+
+        [HttpPost("Add")]
+        public ActionResult<string> Add([FromBody] Domain.Entity.Task task)
+        {
+            var model = _taskRepository.AddTask(task);
+            if (model == null)
+            {
+                return NotFound();
+            }
+            return Ok(model);
         }
     }
 }
