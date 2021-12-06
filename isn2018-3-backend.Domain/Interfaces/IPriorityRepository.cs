@@ -8,5 +8,6 @@ namespace isn2018_3_backend.Domain.Interfaces
 {
     public interface IPriorityRepository
     {
+        List<GetProjectDto> GetAllProjects();
     }
 }

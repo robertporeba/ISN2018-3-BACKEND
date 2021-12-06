@@ -18,7 +18,7 @@ namespace isn2018_3_backend.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [AllowAnonymous]
+    [Authorize(Roles = "Admin, User")]
     public class ProjectController : ControllerBase
     {
         private readonly IProjectRepository _projectRepository;

@@ -16,7 +16,7 @@ namespace isn2018_3_backend.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, User")]
     public class TaskController : ControllerBase
     {
         private readonly ITaskRepository _taskRepository;

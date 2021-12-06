@@ -15,7 +15,7 @@ namespace isn2018_3_backend.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, User")]
     public class PriorityController : ControllerBase
     {
         [HttpGet("GetInfo")]

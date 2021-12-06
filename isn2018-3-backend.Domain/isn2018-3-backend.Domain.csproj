@@ -5,4 +5,8 @@
     <RootNamespace>isn2018_3_backend.Domain</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Dto\Priority\" />
+  </ItemGroup>
+
 </Project>
