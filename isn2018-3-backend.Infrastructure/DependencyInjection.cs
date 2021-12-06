@@ -18,6 +18,7 @@ namespace isn2018_3_backend.Infrastructure
             services.AddTransient<IProjectRepository, ProjectRepository>();
             services.AddTransient<IPriorityRepository, PriorityRepository>();
             services.AddTransient<IFileRepository, FileRepository>();
+            services.AddTransient<IUserProjectRepository, UserProjectRepository>();
             return services;
         }
     }

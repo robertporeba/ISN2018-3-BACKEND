@@ -50,7 +50,7 @@ namespace isn2018_3_backend.API.Controllers
             return Ok(model);
         }
 
-        [HttpPost("Get")]
+        [HttpGet("Get")]
         public ActionResult<GetProjectDto> Get(int id)
         {
             var model = _projectRepository.GetProject(id);
@@ -61,7 +61,7 @@ namespace isn2018_3_backend.API.Controllers
             return Ok(model);
         }
 
-        [HttpPost("GetAll")]
+        [HttpGet("GetAll")]
         public ActionResult<List<GetProjectDto>> GetList()
         {
             var model = _projectRepository.GetAllProjects();

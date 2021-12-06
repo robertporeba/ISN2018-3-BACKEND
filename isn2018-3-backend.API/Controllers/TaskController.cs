@@ -1,4 +1,5 @@
-﻿using isn2018_3_backend.Domain.Interfaces;
+﻿using isn2018_3_backend.Domain.Dto.Task;
+using isn2018_3_backend.Domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -27,9 +28,42 @@ namespace isn2018_3_backend.API.Controllers
         }
 
         [HttpPost("Add")]
-        public ActionResult<string> Add([FromBody] Domain.Entity.Task task)
+        public ActionResult<string> Add([FromBody] AddTaskDto projectDto)
         {
-            var model = _taskRepository.AddTask(task);
+            var model = _taskRepository.AddTask(projectDto);
+            if (model == null)
+            {
+                return NotFound();
+            }
+            return Ok(model);
+        }
+
+        [HttpPost("Delete")]
+        public ActionResult<string> Delete(int id)
+        {
+            var model = _taskRepository.DeleteTask(id);
+            if (model == null)
+            {
+                return NotFound();
+            }
+            return Ok(model);
+        }
+
+        [HttpGet("Get")]
+        public ActionResult<GetTaskDto> Get(int id)
+        {
+            var model = _taskRepository.GetTask(id);
+            if (model == null)
+            {
+                return NotFound();
+            }
+            return Ok(model);
+        }
+
+        [HttpGet("GetAll")]
+        public ActionResult<List<GetTaskDto>> GetList()
+        {
+            var model = _taskRepository.GetAllTasks();
             if (model == null)
             {
                 return NotFound();

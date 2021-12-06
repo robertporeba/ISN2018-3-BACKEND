@@ -1,4 +1,5 @@
-﻿using System;
+﻿using isn2018_3_backend.Domain.Dto.Task;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,10 @@ namespace isn2018_3_backend.Domain.Interfaces
 {
     public interface ITaskRepository
     {
-        string AddTask(Domain.Entity.Task task);
+        string AddTask(AddTaskDto task);
+        string UpdateTask(AddTaskDto task);
+        string DeleteTask(int id);
+        GetTaskDto GetTask(int id);
+        List<GetTaskDto> GetAllTasks();
     }
 }

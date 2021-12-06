@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using isn2018_3_backend.Domain.Dto.Status;
+using isn2018_3_backend.Domain.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -18,11 +20,33 @@ namespace isn2018_3_backend.API.Controllers
     [Authorize(Roles = "Admin, User")]
     public class StatusController : ControllerBase
     {
-        [HttpGet("GetInfo")]
-        public string GetInfo()
+        private readonly IStatusRepository _statusRepository;
+
+        public StatusController(IStatusRepository statusRepository)
         {
-            string info = "Access";
-            return info;
+            _statusRepository = statusRepository;
+        }
+
+        [HttpGet("Get")]
+        public ActionResult<GetStatusDto> Get(int id)
+        {
+            var model = _statusRepository.GetStatus(id);
+            if (model == null)
+            {
+                return NotFound();
+            }
+            return Ok(model);
+        }
+
+        [HttpGet("GetAll")]
+        public ActionResult<List<GetStatusDto>> GetList()
+        {
+            var model = _statusRepository.GetAllStatuses();
+            if (model == null)
+            {
+                return NotFound();
+            }
+            return Ok(model);
         }
     }
 }
