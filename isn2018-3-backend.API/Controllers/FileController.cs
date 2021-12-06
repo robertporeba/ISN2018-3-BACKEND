@@ -15,14 +15,8 @@ namespace isn2018_3_backend.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, User")]
     public class FileController : ControllerBase
     {
-        [HttpGet("GetInfo")]
-        public string GetInfo()
-        {
-            string info = "Access";
-            return info;
-        }
     }
 }

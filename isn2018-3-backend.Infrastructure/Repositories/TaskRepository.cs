@@ -1,4 +1,5 @@
-﻿using isn2018_3_backend.Domain.Interfaces;
+﻿using isn2018_3_backend.Domain.Dto.Task;
+using isn2018_3_backend.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +16,80 @@ namespace isn2018_3_backend.Infrastructure.Repositories
         {
             _context = context;
         }
-        public string AddTask(Domain.Entity.Task task)
+
+        public string AddTask(AddTaskDto task)
         {
-            _context.Tasks.Add(task);
+            var taskToSave = new Domain.Entity.Task
+            {
+                Name = task.Name,
+                CreateDate = DateTime.Now,
+                Author = task.Author,
+                AssignedUser = task.AssignedUser,
+                StatusId = task.StatusId,
+                PriorityId = task.PriorityId,
+                ProjectId = task.ProjectId
+            };
+
+            _context.Tasks.Add(taskToSave);
             _context.SaveChanges();
             return "ok";
+        }
+
+        public string DeleteTask(int id)
+        {
+            var task = _context.Tasks.Find(id);
+            if (task != null)
+            {
+                _context.Tasks.Remove(task);
+                _context.SaveChanges();
+                return "ok";
+            }
+            return null;
+        }
+
+        public List<GetTaskDto> GetAllTasks()
+        {
+            var tasks = _context.Tasks.ToList();
+            var tasksDtoList = new List<GetTaskDto>();
+            foreach (Domain.Entity.Task task in tasks)
+            {
+                var taskDto = new GetTaskDto
+                {
+                    Id = task.Id,
+                    Name = task.Name,
+                    CreateDate = task.CreateDate,
+                    Author = task.Author,
+                    AssignedUser = task.AssignedUser,
+                    StatusId = task.StatusId,
+                    PriorityId = task.PriorityId,
+                    ProjectId = task.ProjectId
+                };
+                tasksDtoList.Add(taskDto);
+            }
+
+            return tasksDtoList;
+        }
+
+        public GetTaskDto GetTask(int id)
+        {
+            var task = _context.Tasks.FirstOrDefault(a => a.Id == id);
+            var taskDto = new GetTaskDto
+            {
+                Id = task.Id,
+                Name = task.Name,
+                CreateDate = task.CreateDate,
+                Author = task.Author,
+                AssignedUser = task.AssignedUser,
+                StatusId = task.StatusId,
+                PriorityId = task.PriorityId,
+                ProjectId = task.ProjectId
+            };
+            return taskDto;
+        }
+
+        public string UpdateTask(AddTaskDto task)
+        {
+            throw new NotImplementedException();
         }
     }
 }

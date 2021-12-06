@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace isn2018_3_backend.Domain.Entity
+namespace isn2018_3_backend.Domain.Dto.Task
 {
-    [Table("Task")]
-    public class Task
+    public class GetTaskDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -18,10 +16,5 @@ namespace isn2018_3_backend.Domain.Entity
         public int StatusId { get; set; }
         public int PriorityId { get; set; }
         public int ProjectId { get; set; }
-
-        public virtual File File { get; set; }
-        public virtual Status Status { get; set; }
-        public virtual Priority Priority { get; set; }
-        public virtual Project Project { get; set; }
     }
 }

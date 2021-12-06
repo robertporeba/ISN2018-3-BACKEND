@@ -16,6 +16,7 @@ namespace isn2018_3_backend.Infrastructure
         public DbSet<Project> Projects { get; set; }
         public DbSet<Priority> Priorities { get; set; }
         public DbSet<Domain.Entity.Task> Tasks { get; set; }
+        public DbSet<UserProject> UserProjects { get; set; }
 
         public IsnContext(DbContextOptions options) : base(options)
         {
