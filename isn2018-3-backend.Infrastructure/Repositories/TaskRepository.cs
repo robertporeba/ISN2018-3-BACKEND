@@ -47,9 +47,9 @@ namespace isn2018_3_backend.Infrastructure.Repositories
             return null;
         }
 
-        public List<GetTaskDto> GetAllTasks()
+        public List<GetTaskDto> GetAllTasks(int id)
         {
-            var tasks = _context.Tasks.ToList();
+            var tasks = _context.Tasks.Where(x => x.ProjectId == id).ToList();
             var tasksDtoList = new List<GetTaskDto>();
             foreach (Domain.Entity.Task task in tasks)
             {

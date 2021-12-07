@@ -13,6 +13,6 @@ namespace isn2018_3_backend.Domain.Interfaces
         string UpdateTask(AddTaskDto task);
         string DeleteTask(int id);
         GetTaskDto GetTask(int id);
-        List<GetTaskDto> GetAllTasks();
+        List<GetTaskDto> GetAllTasks(int id);
     }
 }
