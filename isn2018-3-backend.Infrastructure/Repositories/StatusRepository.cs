@@ -36,7 +36,19 @@ namespace isn2018_3_backend.Infrastructure.Repositories
 
         public List<GetStatusDto> GetAllStatuses()
         {
-            throw new NotImplementedException();
+            var statuses = _context.Statuses.ToList();
+            var statusesDtoList = new List<GetStatusDto>();
+            foreach (Status status in statuses)
+            {
+                var statusDto = new GetStatusDto
+                {
+                    Id = status.Id,
+                    Name = status.Name,
+                };
+                statusesDtoList.Add(statusDto);
+            }
+
+            return statusesDtoList;
         }
 
         public GetStatusDto GetStatus(int id)
