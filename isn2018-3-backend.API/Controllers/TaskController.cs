@@ -61,9 +61,9 @@ namespace isn2018_3_backend.API.Controllers
         }
 
         [HttpGet("GetAll")]
-        public ActionResult<List<GetTaskDto>> GetList()
+        public ActionResult<List<GetTaskDto>> GetList(int id)
         {
-            var model = _taskRepository.GetAllTasks();
+            var model = _taskRepository.GetAllTasks(id);
             if (model == null)
             {
                 return NotFound();
