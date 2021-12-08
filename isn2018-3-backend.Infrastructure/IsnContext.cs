@@ -24,21 +24,17 @@ namespace isn2018_3_backend.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<File>()
-                .HasOne(a => a.Task).WithOne(b => b.File)
-                .HasForeignKey<File>(e => e.TaskId);
+            builder.Entity<Domain.Entity.Task>()
+                .HasMany(a => a.File).WithOne(b => b.Task);
 
             builder.Entity<Domain.Entity.Task>()
-                .HasOne(a => a.Priority).WithOne(b => b.Task)
-                .HasForeignKey<Domain.Entity.Task>(e => e.PriorityId);
+                .HasMany(a => a.Priority).WithOne(b => b.Task);
 
             builder.Entity<Domain.Entity.Task>()
-                .HasOne(a => a.Status).WithOne(b => b.Task)
-                .HasForeignKey<Domain.Entity.Task>(e => e.StatusId);
+                .HasMany(a => a.Status).WithOne(b => b.Task);
 
             builder.Entity<Domain.Entity.Task>()
-                .HasOne(a => a.Project).WithOne(b => b.Task)
-                .HasForeignKey<Domain.Entity.Task>(e => e.ProjectId);
+                .HasMany(a => a.Project).WithOne(b => b.Task);
 
             base.OnModelCreating(builder);
         }
