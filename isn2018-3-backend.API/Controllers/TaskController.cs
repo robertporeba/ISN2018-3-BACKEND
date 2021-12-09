@@ -31,10 +31,6 @@ namespace isn2018_3_backend.API.Controllers
         public ActionResult<string> Add([FromBody] AddTaskDto projectDto)
         {
             var model = _taskRepository.AddTask(projectDto);
-            if (model == null)
-            {
-                return NotFound();
-            }
             return Ok(model);
         }
 

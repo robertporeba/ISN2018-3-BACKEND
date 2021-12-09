@@ -17,12 +17,13 @@ namespace isn2018_3_backend.Infrastructure.Repositories
             _context = context;
         }
 
-        public string AddTask(AddTaskDto task)
+        public int AddTask(AddTaskDto task)
         {
+            var time = DateTime.Now;
             var taskToSave = new Domain.Entity.Task
             {
                 Name = task.Name,
-                CreateDate = DateTime.Now,
+                CreateDate = time,
                 Author = task.Author,
                 AssignedUser = task.AssignedUser,
                 StatusId = task.StatusId,
@@ -32,7 +33,8 @@ namespace isn2018_3_backend.Infrastructure.Repositories
 
             _context.Tasks.Add(taskToSave);
             _context.SaveChanges();
-            return "ok";
+            var id = _context.Tasks.FirstOrDefault(x => x.CreateDate == time).Id;
+            return id;
         }
 
         public string DeleteTask(int id)
