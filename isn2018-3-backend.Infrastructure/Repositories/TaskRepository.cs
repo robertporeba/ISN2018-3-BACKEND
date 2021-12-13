@@ -55,6 +55,7 @@ namespace isn2018_3_backend.Infrastructure.Repositories
             var tasksDtoList = new List<GetTaskDto>();
             foreach (Domain.Entity.Task task in tasks)
             {
+                var priorityName = _context.Priorities.FirstOrDefault(x => x.Id == task.PriorityId).Name;
                 var taskDto = new GetTaskDto
                 {
                     Id = task.Id,
@@ -64,7 +65,9 @@ namespace isn2018_3_backend.Infrastructure.Repositories
                     AssignedUser = task.AssignedUser,
                     StatusId = task.StatusId,
                     PriorityId = task.PriorityId,
-                    ProjectId = task.ProjectId
+                    ProjectId = task.ProjectId,
+                    PriorityName=priorityName,
+
                 };
                 tasksDtoList.Add(taskDto);
             }
@@ -75,6 +78,7 @@ namespace isn2018_3_backend.Infrastructure.Repositories
         public GetTaskDto GetTask(int id)
         {
             var task = _context.Tasks.FirstOrDefault(a => a.Id == id);
+            var priorityName = _context.Priorities.FirstOrDefault(x => x.Id == task.PriorityId).Name;
             var taskDto = new GetTaskDto
             {
                 Id = task.Id,
@@ -84,7 +88,8 @@ namespace isn2018_3_backend.Infrastructure.Repositories
                 AssignedUser = task.AssignedUser,
                 StatusId = task.StatusId,
                 PriorityId = task.PriorityId,
-                ProjectId = task.ProjectId
+                ProjectId = task.ProjectId,
+                PriorityName = priorityName,
             };
             return taskDto;
         }
