@@ -16,5 +16,6 @@ namespace isn2018_3_backend.Domain.Dto.Task
         public int StatusId { get; set; }
         public int PriorityId { get; set; }
         public int ProjectId { get; set; }
+        public string PriorityName { get; set; }
     }
 }
