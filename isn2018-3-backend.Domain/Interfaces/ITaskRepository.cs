@@ -10,9 +10,10 @@ namespace isn2018_3_backend.Domain.Interfaces
     public interface ITaskRepository
     {
         int AddTask(AddTaskDto task);
-        string UpdateTask(AddTaskDto task);
+        string UpdateTask(UpdateTaskDto task);
         string DeleteTask(int id);
         GetTaskDto GetTask(int id);
         List<GetTaskDto> GetAllTasks(int id);
+        string ChangeStatus(TaskStatusDto taskStatus);
     }
 }

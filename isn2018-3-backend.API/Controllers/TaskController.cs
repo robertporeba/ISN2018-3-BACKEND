@@ -66,5 +66,27 @@ namespace isn2018_3_backend.API.Controllers
             }
             return Ok(model);
         }
+
+        [HttpPost("ChangeStatus")]
+        public ActionResult<string> ChangeStatus([FromBody] TaskStatusDto taskStatus)
+        {
+            var response = _taskRepository.ChangeStatus(taskStatus);
+            if (response == null)
+            {
+                return NotFound();
+            }
+            return Ok(response);
+        }
+
+        [HttpPost("Update")]
+        public ActionResult<string> Update([FromBody] UpdateTaskDto task)
+        {
+            var response = _taskRepository.UpdateTask(task);
+            if (response == null)
+            {
+                return NotFound();
+            }
+            return Ok(response);
+        }
     }
 }
