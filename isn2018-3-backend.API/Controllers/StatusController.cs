@@ -1,4 +1,5 @@
 ﻿using isn2018_3_backend.Domain.Dto.Status;
+using isn2018_3_backend.Domain.Dto.Task;
 using isn2018_3_backend.Domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

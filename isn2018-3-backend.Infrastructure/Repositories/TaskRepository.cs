@@ -37,6 +37,14 @@ namespace isn2018_3_backend.Infrastructure.Repositories
             return id;
         }
 
+        public string ChangeStatus(TaskStatusDto taskStatus)
+        {
+            var task = _context.Tasks.FirstOrDefault(x => x.Id == taskStatus.Id);
+            task.StatusId = taskStatus.StatusId;
+            _context.SaveChanges();
+            return "Ok";
+        }
+
         public string DeleteTask(int id)
         {
             var task = _context.Tasks.Find(id);
@@ -94,9 +102,14 @@ namespace isn2018_3_backend.Infrastructure.Repositories
             return taskDto;
         }
 
-        public string UpdateTask(AddTaskDto task)
+        public string UpdateTask(UpdateTaskDto taskDto)
         {
-            throw new NotImplementedException();
+            var task = _context.Tasks.FirstOrDefault(x => x.Id == taskDto.Id);
+            task.Name = taskDto.Name;
+            task.AssignedUser = taskDto.AssignedUser;
+            task.PriorityId = taskDto.PriorityId;
+            _context.SaveChanges();
+            return "Ok";
         }
     }
 }
