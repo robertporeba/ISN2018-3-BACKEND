@@ -24,6 +24,7 @@ namespace isn2018_3_backend.Infrastructure.Repositories
             {
                 Name = task.Name,
                 CreateDate = time,
+                Description= "",
                 Author = task.Author,
                 AssignedUser = task.AssignedUser,
                 StatusId = task.StatusId,
@@ -70,6 +71,7 @@ namespace isn2018_3_backend.Infrastructure.Repositories
                     Name = task.Name,
                     CreateDate = task.CreateDate,
                     Author = task.Author,
+                    Description = task.Description,
                     AssignedUser = task.AssignedUser,
                     StatusId = task.StatusId,
                     PriorityId = task.PriorityId,
@@ -91,6 +93,7 @@ namespace isn2018_3_backend.Infrastructure.Repositories
             {
                 Id = task.Id,
                 Name = task.Name,
+                Description = task.Description,
                 CreateDate = task.CreateDate,
                 Author = task.Author,
                 AssignedUser = task.AssignedUser,
@@ -108,6 +111,7 @@ namespace isn2018_3_backend.Infrastructure.Repositories
             task.Name = taskDto.Name;
             task.AssignedUser = taskDto.AssignedUser;
             task.PriorityId = taskDto.PriorityId;
+            task.Description = taskDto.Description;
             _context.SaveChanges();
             return "Ok";
         }
