@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using isn2018_3_backend.Infrastructure;
 
 namespace isn2018_3_backend.Infrastructure.Migrations
 {
     [DbContext(typeof(IsnContext))]
-    partial class IsnContextModelSnapshot : ModelSnapshot
+    [Migration("20211219201924_ChangeTaskTable")]
+    partial class ChangeTaskTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -326,6 +328,9 @@ namespace isn2018_3_backend.Infrastructure.Migrations
 
                     b.Property<string>("FileName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("FormFile")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,6 +15,7 @@ namespace isn2018_3_backend.Domain.Entity
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string FileName { get; set; }
         public string Description { get; set; }
         public DateTime CreateDate { get; set; }
         public string Author { get; set; }
