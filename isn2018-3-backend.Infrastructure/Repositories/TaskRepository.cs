@@ -2,6 +2,7 @@
 using isn2018_3_backend.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,7 @@ namespace isn2018_3_backend.Infrastructure.Repositories
                 Name = task.Name,
                 CreateDate = time,
                 Description= "",
+                FileName = "",
                 Author = task.Author,
                 AssignedUser = task.AssignedUser,
                 StatusId = task.StatusId,
@@ -71,6 +73,7 @@ namespace isn2018_3_backend.Infrastructure.Repositories
                     Name = task.Name,
                     CreateDate = task.CreateDate,
                     Author = task.Author,
+                    FileName = task.FileName,
                     Description = task.Description,
                     AssignedUser = task.AssignedUser,
                     StatusId = task.StatusId,
@@ -96,6 +99,7 @@ namespace isn2018_3_backend.Infrastructure.Repositories
                 Description = task.Description,
                 CreateDate = task.CreateDate,
                 Author = task.Author,
+                FileName = task.FileName,
                 AssignedUser = task.AssignedUser,
                 StatusId = task.StatusId,
                 PriorityId = task.PriorityId,
@@ -107,11 +111,13 @@ namespace isn2018_3_backend.Infrastructure.Repositories
 
         public string UpdateTask(UpdateTaskDto taskDto)
         {
+            //var path = Path.GetFileName(taskDto.FileName);
             var task = _context.Tasks.FirstOrDefault(x => x.Id == taskDto.Id);
             task.Name = taskDto.Name;
             task.AssignedUser = taskDto.AssignedUser;
             task.PriorityId = taskDto.PriorityId;
             task.Description = taskDto.Description;
+            task.FileName = taskDto.FileName;
             _context.SaveChanges();
             return "Ok";
         }
